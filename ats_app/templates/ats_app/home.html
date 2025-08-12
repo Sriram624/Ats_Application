@@ -1,0 +1,85 @@
+{% extends 'ats_app/base.html' %}
+{% load static %} {# Good practice to load static #}
+
+{% block title %}Applicant Tracking System{% endblock %}
+
+{% block content %}
+{# Option 1: Enhanced Jumbotron Style (Primary Background) #}
+<div class="container col-xl-10 col-xxl-8 px-4 py-5"> {# Control width and padding #}
+    <div class="row align-items-center g-lg-5 py-5">
+      <div class="col-lg-7 text-center text-lg-start">
+        <h1 class="display-4 fw-bold lh-1 mb-3">Welcome to Ats App</h1>
+        <p class="col-lg-10 fs-4">Browse job postings or submit your resume easily.</p> {# Slightly more descriptive #}
+      </div>
+      <div class="col-md-10 mx-auto col-lg-5">
+        {# You could place a form here, but for now, we use buttons below or link to actions #}
+         <div class="d-grid gap-3 d-md-flex justify-content-md-start justify-content-center"> {# Button alignment #}
+            <a href="{% url 'job_list' %}" class="btn btn-primary btn-lg px-4 me-md-2" type="button">
+                <i class="fas fa-briefcase me-2"></i> View Jobs {# Optional Icon #}
+            </a>
+            <a href="{% url 'upload_resume' %}" class="btn btn-outline-secondary btn-lg px-4" type="button">
+                <i class="fas fa-upload me-2"></i> Upload Resume {# Optional Icon #}
+            </a>
+        </div>
+        {# Example of adding an illustrative image later if desired #}
+        {# <img src="{% static 'ats_app/images/hero-image.svg' %}" class="img-fluid mt-4 rounded" alt="Illustration"> #}
+      </div>
+    </div>
+  </div>
+
+{# Separator #}
+<hr class="my-5">
+
+{# Option 2: Alternative - Card-based Feature Highlights (Example) #}
+<div class="container px-4 py-5" id="featured-3">
+    <h2 class="pb-2 border-bottom text-center mb-4">Key Features</h2>
+    <div class="row g-4 py-3 row-cols-1 row-cols-lg-3">
+      <div class="feature col text-center">
+         <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3 rounded-circle" style="width: 4rem; height: 4rem;">
+            <i class="fas fa-list-alt"></i> {# Icon for Job Listings #}
+        </div>
+        <h3 class="fs-3">Job Listings</h3>
+        <p>Browse and search through available job opportunities posted within the system.</p>
+        <a href="{% url 'job_list' %}" class="icon-link d-inline-flex align-items-center">
+          View Jobs
+          <i class="fas fa-chevron-right ms-2 small"></i>
+        </a>
+      </div>
+      <div class="feature col text-center">
+        <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-success bg-gradient fs-2 mb-3 rounded-circle" style="width: 4rem; height: 4rem;">
+            <i class="fas fa-cloud-upload-alt"></i> {# Icon for Resume Upload #}
+        </div>
+        <h3 class="fs-3">Easy Upload</h3>
+        <p>Quickly upload your resume in standard formats (PDF, DOC, DOCX) to apply for positions.</p>
+        <a href="{% url 'upload_resume' %}" class="icon-link d-inline-flex align-items-center">
+          Upload Now
+          <i class="fas fa-chevron-right ms-2 small"></i>
+        </a>
+      </div>
+      <div class="feature col text-center">
+         <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-info bg-gradient fs-2 mb-3 rounded-circle" style="width: 4rem; height: 4rem;">
+           <i class="fas fa-cogs"></i> {# Icon for ATS Functionality #}
+        </div>
+        <h3 class="fs-3">Simple Tracking</h3>
+        <p>A basic system demonstrating core ATS concepts built using the Django framework.</p>
+         {# No specific link here, just descriptive #}
+      </div>
+    </div>
+  </div>
+
+
+{# Add Font Awesome if you want to use the icons - link in base.html is preferred #}
+{# <style>
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
+
+    /* Optional: Style for the icon link */
+    .icon-link > .fas {
+        transition: transform 0.2s ease-in-out;
+    }
+    .icon-link:hover > .fas {
+        transform: translateX(3px);
+    }
+    .feature-icon { box-shadow: 0 .125rem .25rem rgba(0,0,0,.075); } /* Subtle shadow for icons */
+
+</style> #}
+{% endblock %}

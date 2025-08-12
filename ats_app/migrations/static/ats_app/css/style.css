@@ -1,0 +1,28 @@
+/* ats_app/static/ats_app/css/style.css */
+
+/* Add some basic custom styles if needed */
+body {
+    padding-bottom: 60px; /* Prevent footer overlap */
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px; /* Footer height */
+    line-height: 60px; /* Vertically center */
+}
+
+/* Style for preformatted text */
+pre {
+    white-space: pre-wrap;       /* CSS3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    background-color: #f8f9fa;   /* Light background for readability */
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #dee2e6;
+}
+

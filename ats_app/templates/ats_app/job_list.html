@@ -1,0 +1,92 @@
+{% extends 'ats_app/base.html' %}
+{% load static %} {# Load static if needed #}
+
+{% block title %}Job Listings{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5"> {# Container for spacing #}
+    <div class="row justify-content-center">
+        <div class="col-lg-9 col-xl-8"> {# Control width for the list #}
+
+            <div class="d-flex justify-content-between align-items-center mb-4"> {# Flexbox for title and primary button #}
+                <h2 class="mb-0">Available Job Postings</h2>
+                <a href="{% url 'post_job' %}" class="btn btn-primary">
+                    <i class="fas fa-plus me-2"></i>Post a New Job {# Optional Icon #}
+                </a>
+            </div>
+
+            <div class="card shadow-sm"> {# Wrap list/message in a card #}
+                <div class="card-header bg-light"> {# Optional header for context #}
+                    <h5 class="mb-0">Current Openings</h5>
+                </div>
+
+                {% if jobs %}
+                    <div class="list-group list-group-flush"> {# Use list-group-flush to remove card borders around items #}
+                        {% for job in jobs %}
+                        <div class="list-group-item px-3 py-3"> {# Adjust padding if needed #}
+                            <div class="d-flex w-100 justify-content-between align-items-center">
+                                <div>
+                                    <h5 class="mb-1">
+                                        <a href="{% url 'job_detail' job.id %}" class="text-decoration-none stretched-link">{{ job.title }}</a> {# Stretched-link makes the whole item clickable #}
+                                    </h5>
+                                    <small class="text-muted">
+                                        <i class="far fa-calendar-alt me-1"></i> {# Optional Icon #}
+                                        Posted on: {{ job.posted_date|date:"M d, Y" }} {# Changed date format slightly #}
+                                    </small>
+                                    {# Optional: Add a snippet of the description #}
+                                    {# <p class="mb-1 mt-1 text-muted d-none d-sm-block">{{ job.description|truncatewords:20 }}</p> #}
+                                </div>
+                                <div class="ms-3"> {# Margin start for spacing #}
+                                     <a href="{% url 'find_matches' job.id %}" class="btn btn-outline-info btn-sm" title="Find matching applicant resumes"> {# Changed to outline, added title tooltip #}
+                                        <i class="fas fa-users me-1"></i> {# Optional Icon #}
+                                        Find Matches
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="card-body text-center"> {# Use card-body for padding when empty #}
+                         <div class="alert alert-secondary d-inline-block" role="alert"> {# Use secondary alert or info #}
+                            <i class="fas fa-info-circle me-2"></i>No jobs have been posted yet.
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if jobs %}
+                 <div class="card-footer text-muted bg-light"> {# Optional footer #}
+                     Displaying {{ jobs|length }} job posting{{ jobs|length|pluralize }}.
+                 </div>
+                {% endif %}
+            </div> {# End card #}
+
+            {# Button moved to the top #}
+            {# <a href="{% url 'post_job' %}" class="btn btn-primary mt-4">Post a New Job</a> #}
+
+        </div> {# End col #}
+    </div> {# End row #}
+</div> {# End container #}
+
+{# Add Font Awesome if you want to use the icons - link in base.html is preferred #}
+{# <style>
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
+
+    /* Ensure stretched link works correctly within the flex container */
+    .list-group-item .stretched-link::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+        content: "";
+    }
+     /* Ensure buttons/other links stay clickable over stretched-link */
+    .list-group-item .btn {
+        position: relative;
+        z-index: 2;
+    }
+
+</style> #}
+{% endblock %}

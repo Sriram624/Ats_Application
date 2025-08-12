@@ -1,0 +1,18 @@
+{% extends 'ats_app/base.html' %}
+
+{% block title %}{{ job.title }} - Job Details{% endblock %}
+
+{% block content %}
+<h2>{{ job.title }}</h2>
+<small class="text-muted">Posted on: {{ job.posted_date|date:"Y-m-d H:i" }}</small>
+<hr>
+<h4>Description:</h4>
+<div class="card card-body bg-light">
+    <pre>{{ job.description|linebreaksbr }}</pre> {# Use pre for formatting, linebreaksbr for safety #}
+</div>
+
+<div class="mt-4">
+    <a href="{% url 'find_matches' job.id %}" class="btn btn-info">Find Matching Applicants</a>
+    <a href="{% url 'job_list' %}" class="btn btn-secondary">Back to Job List</a>
+</div>
+{% endblock %}

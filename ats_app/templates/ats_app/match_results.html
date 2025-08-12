@@ -1,0 +1,48 @@
+{% extends 'ats_app/base.html' %}
+
+{% block title %}Match Results for {{ job.title }}{% endblock %}
+
+{% block content %}
+<h2>Match Results for: {{ job.title }}</h2>
+<hr>
+
+{% if error %}
+    <div class="alert alert-warning">{{ error }}</div>
+{% elif ranked_applicants %}
+    <p>Applicants ranked by resume similarity to the job description:</p>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Applicant Name</th>
+                <th>Email</th>
+                <th>Match Score</th>
+                <th>Resume</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for applicant, score in ranked_applicants %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ applicant.name }}</td>
+                <td>{{ applicant.email }}</td>
+                <td><strong>{{ score }}</strong></td>
+                <td>
+                    {% if applicant.resume %}
+                        <a href="{{ applicant.resume.url }}" target="_blank">{{ applicant.filename }}</a>
+                    {% else %}
+                        No file
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <div class="alert alert-info">No matching applicants found or processing error occurred. Check server logs if needed.</div>
+{% endif %}
+
+<a href="{% url 'job_detail' job.id %}" class="btn btn-secondary mt-3">Back to Job Details</a>
+<a href="{% url 'job_list' %}" class="btn btn-outline-secondary mt-3">Back to All Jobs</a>
+
+{% endblock %}
