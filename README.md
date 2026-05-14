@@ -1,0 +1,1 @@
+A web-based Applicant Tracking System built with Django and Artificial Intelligence to streamline the hiring process. The application allows recruiters to post job listings, accept applications, and leverage AI-driven resume parsing and ranking to shortlist candidates efficiently.
