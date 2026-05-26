@@ -34,7 +34,8 @@ Ats_Application/
 │   └── urls.py             # App routing paths
 │
 ├── myats_project/          # Project configuration folder
-├── media/resumes/          # Directory where uploaded resumes are securely stored
+├── media/                  # Media root folder
+│   └── resumes/            # Directory where uploaded resumes are securely stored
 ├── manage.py               # Django CLI management tool
 └── db.sqlite3              # Local database file
 
