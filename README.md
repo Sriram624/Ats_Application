@@ -48,30 +48,6 @@ The system streamlines the hiring process by ranking candidates based on how clo
 
 ---
 
-# Project Structure
-
-```bash
-Ats_Application/
-│
-├── ats_app/
-│   ├── templates/
-│   ├── models.py
-│   ├── views.py
-│   ├── urls.py
-│   └── ...
-│
-├── myats_project/
-│
-├── media/
-│   └── resumes/
-│
-├── manage.py
-├── db.sqlite3
-└── README.md
-```
-
----
-
 # Installation and Setup
 
 ## 1. Clone the Repository
