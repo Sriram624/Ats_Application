@@ -23,7 +23,7 @@ A web-based **Applicant Tracking System (ATS)** built with **Django** and integr
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Tech Stack & Dependencies
 
 * **Backend Framework:** Django (Python)
 * **Frontend:** HTML5, CSS3, Bootstrap (Fully Responsive)
@@ -37,50 +37,27 @@ A web-based **Applicant Tracking System (ATS)** built with **Django** and integr
 ```text
 Ats_Application/
 │
-├── ats_app/                # Main application logic (Views, Models, Templates, Forms)
-│   ├── templates/          # HTML interfaces for Recruiters and Candidates
+├── ats_app/                # Main application logic
+│   ├── migrations/         # Database migration files
 │   ├── static/             # CSS styles, JavaScript, and UI assets
-│   └── ...
+│   ├── templates/          # HTML interfaces for Recruiters and Candidates
+│   │   ├── base.html       # Global boilerplate layout
+│   │   ├── recruiter/      # Dashboards, job creation forms, candidate ranking lists
+│   │   └── candidate/      # Job boards, application status portals
+│   ├── admin.py            # Admin panel registration
+│   ├── apps.py             # Application configuration
+│   ├── forms.py            # Form validation logic (Job post form, Candidate application form)
+│   ├── models.py           # Database schemas (Job, Candidate, Profile, Application)
+│   ├── views.py            # Business logic controllers
+│   └── urls.py             # App-specific routing paths
 │
-├── myats_project/          # Project configuration directory (settings.py, urls.py)
+├── myats_project/          # Project configuration directory
+│   ├── settings.py         # Global settings (Installed apps, Middleware, Databases)
+│   ├── urls.py             # Global routing definitions
+│   └── wsgi.py / asgi.py   # Server gateway entrypoints
 │
 ├── media/                  # Media root folder
 │   └── resumes/            # Securely stored candidate resumes (PDFs/Docs)
 │
 ├── manage.py               # Django project manager CLI
 └── db.sqlite3              # Local development database
-⚙️ Installation & Setup
-Follow these steps to get your local development environment up and running.
-
-1. Prerequisites
-Ensure you have Python 3.8+ and pip installed on your machine.
-
-2. Clone the Repository
-Bash
-git clone [https://github.com/Sriram624/Ats_Application.git](https://github.com/Sriram624/Ats_Application.git)
-cd Ats_Application
-3. Create a Virtual Environment
-Bash
-# Windows
-python -m venv venv
-venv\Scripts\activate
-
-# macOS/Linux
-python3 -m venv venv
-source venv/bin/activate
-4. Install Dependencies
-(Note: Ensure you generate a requirements.txt if you haven't already by running pip freeze > requirements.txt after installing your packages.)
-
-Bash
-pip install -r requirements.txt
-5. Run Database Migrations
-Bash
-python manage.py makemigrations
-python manage.py migrate
-6. Create a Superuser (Recruiter/Admin Access)
-Bash
-python manage.py createsuperuser
-7. Launch the Development Server
-Bash
-python manage.py runserver
-Open your browser and navigate to http://127.0.0.1:8000/.
