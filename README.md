@@ -26,18 +26,16 @@ A web-based Applicant Tracking System (ATS) built with Django and scikit-learn. 
 ## 📁 Project Layout
 
 Ats_Application/
-│
-├── ats_app/                # Core application directory
-│   ├── templates/          # HTML files (job forms, applicant lists, match results)
-│   ├── models.py           # Database schemas (Job, Applicant)
-│   ├── views.py            # Logic for text parsing and TF-IDF matching
-│   └── urls.py             # App routing paths
-│
-├── myats_project/          # Project configuration folder
-├── media/                  # Media root folder
-│   └── resumes/            # Directory where uploaded resumes are securely stored
-├── manage.py               # Django CLI management tool
-└── db.sqlite3              # Local database file
+├── ats_app/                  # Core application directory
+│   ├── templates/            # HTML files (job forms, applicant lists, match results)
+│   ├── models.py             # Database schemas (Job, Applicant)
+│   ├── views.py              # Logic for text parsing and TF-IDF matching
+│   └── urls.py               # App routing paths
+├── myats_project/            # Project configuration folder
+├── media/                    # Media root folder
+│   └── resumes/              # Directory where uploaded resumes are securely stored
+├── manage.py                 # Django CLI management tool
+└── db.sqlite3                # Local database file
 
 ---
 
